@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     //Content
-    entry: ['babel-polyfill', 'react-hot-loader/patch', './src/main.js'],
+    entry: ['babel-polyfill', 'react-hot-loader/patch', './src/index.js'],
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].js",

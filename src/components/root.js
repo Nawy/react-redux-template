@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Router extends Component {
+class Root extends Component {
     render() {
         return (
             <h1>Hello</h1>
@@ -8,4 +8,4 @@ class Router extends Component {
     }
 }
 
-export default Router;
+export default Root;
