@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-class Root extends Component {
-    render() {
-        return (
-            <h1>Hello</h1>
-        )
-    }
-}
+const Root = (props) => (
+    <p>
+        Counter: {props.counter} <button onClick={incrementCounter()}>Increase</button>
+    </p>
+);
 
 export default Root;
