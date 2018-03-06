@@ -7,10 +7,10 @@ import thunkMiddleware from 'redux-thunk'
 import logger from 'redux-logger'
 import reducers from './reducers'
 import {testMiddleware} from "./middleware/testMiddleware";
-import Root from './components/root'
+import Root from './containers/root'
 
 let middleware = [thunkMiddleware, logger, testMiddleware];
-const defaultStore = {counter: 0};
+const defaultStore = {};
 const store = createStore(reducers, defaultStore, applyMiddleware(...middleware));
 
 ReactDOM.render(

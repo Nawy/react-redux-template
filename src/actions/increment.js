@@ -1,3 +1,5 @@
+import actionTypes from '../actions/actionTypes'
+
 export const incrementCounter = () => {
-    return {type: "INC", payload: 0}
+    return {type: actionTypes.INC, payload: 0}
 };
