@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 const increment = (state = INITIAL_STATE, action) => {
     if(action.type === actionTypes.INC) {
-        return Object.assign(state, {counter: state.counter + 1});
+        return {...state, counter: state.counter + 1};
     }
     return state;
 };

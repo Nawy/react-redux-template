@@ -1,4 +1,4 @@
-import {connect} from 'react-redux'
+import {connect} from "react-redux";
 import {incrementCounter} from "../actions/increment";
 import App from "../components/app";
 
@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        counter: state.counter
+        counter: state.increment.counter
     }
 };
 

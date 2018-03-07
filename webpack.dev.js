@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     //Content
-    entry: ['babel-polyfill', 'react-hot-loader/patch', './src/index.js'],
+    entry: ['babel-polyfill', './src/index.js'],
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].js",
@@ -14,25 +15,40 @@ module.exports = {
         host: 'localhost'
     },
     module: {
-        rules: [
+        loaders: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
+                loaders: 'babel-loader',
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
+                query: {
+                    presets: ['react']
                 }
             },
+
             {
-                test: /\.html$/,
+                test: /\.css$/,
                 use: [
-                    {
-                        loader: "html-loader"
-                    }
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    'file-loader'
                 ]
             }
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(['dist']),
         new HtmlWebPackPlugin({
             filename: "index.html",
             template: "./src/index.tpl.html"
