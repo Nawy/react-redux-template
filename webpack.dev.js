@@ -1,48 +1,13 @@
-const path = require('path');
+const merge = require('webpack-merge');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const common = require('./webpack.common');
 
-module.exports = {
-    //Content
-    entry: ['babel-polyfill', './src/index.js'],
-    output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "[name].js",
-        publicPath: "/"
-    },
+module.exports = merge(common, {
+
     devServer: {
         port: 3000,
         host: 'localhost'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.(js|jsx)$/,
-                loaders: 'babel-loader',
-                exclude: /node_modules/,
-            },
-
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            },
-
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader'
-                ]
-            }
-        ]
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
@@ -51,4 +16,4 @@ module.exports = {
             template: "./src/index.tpl.html"
         })
     ]
-};
+});

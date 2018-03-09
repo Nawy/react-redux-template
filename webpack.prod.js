@@ -1,31 +1,25 @@
-const publicPath = '/dist/build/';
-var path = require('path');
-const webpack = require('webpack');
+const merge = require('webpack-merge');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = {
-    entry: './index.js',
-    output: {
-        path: path.join(__dirname, '/dist/assets'),
-        filename: '[name].bundle.js',
-        publicPath: publicPath,
-        sourceMapFilename: '[name].map'
-    },
+const common = require('./webpack.common');
+
+module.exports = merge(common, {
 
     plugins: [
-        new webpack.LoaderOptionsPlugin({
-            minimize: true,
-            debug: false
+        new CleanWebpackPlugin(['dist']),
+        new UglifyJsPlugin({
+            sourceMap: true
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            beautify: false,
-            mangle: {
-                screw_ie8: true,
-                keep_fnames: true
-            },
-            compress: {
-                screw_ie8: true
-            },
-            comments: false
+        new HtmlWebPackPlugin({
+            filename: "index.html",
+            template: "./src/index.tpl.html"
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
         })
     ]
-};
+});
