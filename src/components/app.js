@@ -3,9 +3,16 @@ import React, { Component } from 'react';
 const App = (props) => {
     console.log(props);
     return (
-        <p>
-            Counter: {props.counter} <button onClick={props.incrementCounter}>Increase</button>
-        </p>
+        <div className="container">
+            <div className="card">
+                <div className="card-body">
+                    <div className="card-title">
+                        Counter: {props.counter}
+                    </div>
+                    <button className="btn btn-success" onClick={props.incrementCounter}>Increase</button>
+                </div>
+            </div>
+        </div>
     );
 };
 

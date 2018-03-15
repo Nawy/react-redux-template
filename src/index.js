@@ -7,7 +7,8 @@ import thunkMiddleware from 'redux-thunk'
 import logger from 'redux-logger'
 import reducers from './reducers'
 import {testMiddleware} from "./middleware/testMiddleware";
-import App from './containers/app'
+import App from './containers/app';
+import 'bootstrap/dist/css/bootstrap.css';
 
 let middleware = [thunkMiddleware, logger, testMiddleware];
 const defaultStore = {};
