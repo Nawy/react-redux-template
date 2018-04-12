@@ -1,1 +1,14 @@
-@import "~bootstrap/scss/bootstrap";
+@import "./variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond');
+
+body {
+  background-color: #F7F5F3;
+}
+
+.text-block {
+  background-color: #F7F5F3;
+  color: #474747;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.5em;
+}

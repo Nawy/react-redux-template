@@ -9,6 +9,7 @@ import reducers from './reducers'
 import {testMiddleware} from "./middleware/testMiddleware";
 import App from './containers/app';
 import 'bootstrap/dist/css/bootstrap.css';
+import './style/theme.scss';
 
 let middleware = [thunkMiddleware, logger, testMiddleware];
 const defaultStore = {};
